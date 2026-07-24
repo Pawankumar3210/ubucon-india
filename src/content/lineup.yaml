@@ -6,18 +6,18 @@
   edition: ["india-2025"]
   name: "Abdul Hakkeem P A"
   affiliation: "AI Researcher, Master's Student at Cochin University of Science and Technology"
-  track: "Artificial Intelligence & Machine Learning (AI/ML)"
+  track: "AI & ML"
   photo: ../assets/2025/speakers/abdul-hakkeem.jpg
 - id: "aditya-bhattacharya"
   edition: ["india-2025"]
   name: "Aditya Bhattacharya"
   affiliation: "Rajiv Gandhi Institute of Petroleum Technology"
-  track: "Artificial Intelligence & Machine Learning (AI/ML)"
+  track: "AI & ML"
   photo: ../assets/2025/speakers/aditya-bhattacharya.jpg
 - id: "aditya-d"
   edition: ["india-2025"]
   name: "Aditya D"
-  track: "Artificial Intelligence & Machine Learning (AI/ML)"
+  track: "AI & ML"
   photo: ../assets/2025/speakers/aditya-d.jpg
 - id: "aditya-minocha"
   edition: ["india-2025"]
@@ -27,8 +27,8 @@
 - id: "archita-gorle"
   edition: ["india-2025"]
   name: "Archita Gorle"
-  track: "Documentation, Community & Open Source"
-  photo: ../assets/2025/speakers/archita-gorle.png
+  track: "Docs & Community"
+  photo: ../assets/2025/speakers/archita-gorle.jpg
 - id: "balachandran-sivakumar"
   edition: ["india-2025"]
   name: "Balachandran Sivakumar"
@@ -41,7 +41,7 @@
 - id: "bibekananda-hati"
   edition: ["india-2025"]
   name: "Bibekananda Hati"
-  track: "Artificial Intelligence & Machine Learning (AI/ML)"
+  track: "AI & ML"
 - id: "ganesh-patil"
   edition: ["india-2025"]
   name: "Ganesh Patil"
@@ -59,13 +59,13 @@
 - id: "ishani-ghoshal"
   edition: ["india-2025"]
   name: "Ishani Ghoshal"
-  track: "Documentation, Community & Open Source"
+  track: "Docs & Community"
   photo: ../assets/2025/speakers/ishani-ghoshal.jpg
 - id: "kannan-mougalya"
   edition: ["india-2025"]
   name: "Kannan Moudgalya"
   affiliation: "IIT Bombay"
-  track: "Documentation, Community & Open Source"
+  track: "Docs & Community"
   photo: ../assets/2025/speakers/kannan-moudgulya.jpg
 - id: "karthik-m"
   edition: ["india-2025"]
@@ -76,7 +76,7 @@
   edition: ["india-2025"]
   name: "Keirthana Thangavelu Srinivasan"
   affiliation: "Canonical"
-  track: "Documentation, Community & Open Source"
+  track: "Docs & Community"
   photo: ../assets/2025/speakers/keirthana-ts.png
 - id: "kunal-das"
   edition: ["india-2025"]
@@ -91,13 +91,13 @@
 - id: "manjunath-janardhan"
   edition: ["india-2025"]
   name: "Manjunath Janardhan"
-  track: "Artificial Intelligence & Machine Learning (AI/ML)"
+  track: "AI & ML"
   photo: ../assets/2025/speakers/manjunath-janardhan.png
 - id: "n-nishchit"
   edition: ["india-2025"]
   name: "N Nishchit"
   affiliation: "BMS College of Enigneering"
-  track: "Documentation, Community & Open Source"
+  track: "Docs & Community"
   photo: ../assets/2025/speakers/n-nischit.jpg
 - id: "neel-shah"
   edition: ["india-2025"]
@@ -107,7 +107,7 @@
   edition: ["india-2025"]
   name: "Prarabdha Srivastava"
   affiliation: "IISc"
-  track: "Artificial Intelligence & Machine Learning (AI/ML)"
+  track: "AI & ML"
   photo: ../assets/2025/speakers/prarabdha-srivasthava.jpg
 - id: "ramprakash-singaravel"
   edition: ["india-2025"]
@@ -122,7 +122,7 @@
   edition: ["india-2025"]
   name: "Sameer Guruprasad"
   affiliation: "Visvesvaraya Technological University"
-  track: "Artificial Intelligence & Machine Learning (AI/ML)"
+  track: "AI & ML"
   photo: ../assets/2025/speakers/sameer-guruprasad.png
 - id: "samir-kamerkar"
   edition: ["india-2025"]
@@ -139,7 +139,7 @@
 - id: "saumili-dutta"
   edition: ["india-2025"]
   name: "Saumili Dutta"
-  track: "Artificial Intelligence & Machine Learning (AI/ML)"
+  track: "AI & ML"
   photo: ../assets/2025/speakers/saumili-dutta.jpg
 - id: "shanthi-priya"
   edition: ["india-2025"]
@@ -156,7 +156,7 @@
   edition: ["india-2025"]
   name: "Siddhartha Pundit"
   affiliation: "Visvesvaraya Technological University"
-  track: "Artificial Intelligence & Machine Learning (AI/ML)"
+  track: "AI & ML"
   photo: ../assets/2025/speakers/siddhartha-pundit.jpg
 - id: "soumyadeep-ghosh"
   edition: ["india-2025"]
@@ -182,7 +182,7 @@
   edition: ["india-2025"]
   name: "Sumanto Kar"
   affiliation: "FOSSEE, IIT Bombay"
-  track: "Artificial Intelligence & Machine Learning (AI/ML)"
+  track: "AI & ML"
   photo: ../assets/2025/speakers/sumanto-kar.jpg
 - id: "tushar-gupta"
   edition: ["india-2025"]
@@ -210,4 +210,4 @@
   edition: ["india-2025"]
   name: "Vutukuri Sreenivas"
   affiliation: "Stackup"
-  track: "Documentation, Community & Open Source"
+  track: "Docs & Community"

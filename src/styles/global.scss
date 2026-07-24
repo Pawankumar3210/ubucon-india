@@ -1,5 +1,11 @@
 @import 'vanilla-framework';
 @include vanilla;
+@include vf-p-icon-generative-ai;
+@include vf-p-icon-machines;
+@include vf-p-icon-desktop;
+@include vf-p-icon-security;
+@include vf-p-icon-comments;
+@include vf-p-icon-connected;
 
 // Vanilla 4.55 ships @font-face without font-display; re-declare with swap so
 // text paints in a fallback instead of staying invisible while Ubuntu loads.
@@ -71,8 +77,6 @@
   align-items: center;
   gap: 0.5rem;
 }
-// Square chips - Vanilla ships a 1rem pill; brand uses square corners (like buttons).
-.p-chip { border-radius: 0; }
 
 // Notifications - match the Figma 1:1: tinted fill per type + a 4px coloured
 // left bar, no status icon and no outer border. Stock Vanilla is white-bg with

@@ -17,6 +17,15 @@
     page = 1;
   }
 
+  const catIcon = {
+    'AI & ML': 'generative-ai',
+    'Cloud & Infrastructure': 'machines',
+    'Desktop': 'desktop',
+    'DevOps & Security': 'security',
+    'Docs & Community': 'comments',
+    'Embedded Systems & IoT': 'connected',
+  };
+
   const initials = (name) =>
     name.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
 </script>
@@ -25,13 +34,13 @@
   <div class="filters" role="group" aria-label="Filter speakers by category">
     {#each categories as cat}
       <button
-        type="button"
-        class="chip"
+        class="p-chip"
         class:is-active={active === cat}
         aria-pressed={active === cat}
         onclick={() => pick(cat)}
       >
-        {cat}
+        <i class="p-icon--{catIcon[cat] || 'topic'}"></i>
+        <span class="p-chip__value">{cat}</span>
       </button>
     {/each}
   </div>
@@ -52,7 +61,6 @@
         <div class="p-card__inner speaker__body">
           <h3 class="p-card__title speaker__name">{s.name}</h3>
           {#if s.role}<p class="speaker__role">{s.role}</p>{/if}
-          {#if s.category}<span class="p-chip"><span class="p-chip__value">{s.category}</span></span>{/if}
         </div>
       </div>
     </li>
@@ -77,19 +85,6 @@
 
 <style>
   .filters { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 0 0 2rem; }
-  .chip {
-    border: 0;
-    border-radius: 2px;
-    padding: 0.35rem 0.75rem;
-    font-weight: 600;
-    font-size: 0.875rem;
-    cursor: pointer;
-    background: #f0f0f0;
-    color: #1a1a1a;
-    font-family: inherit;
-  }
-  .chip:hover { background: #e0e0e0; }
-  .chip.is-active { background: #262626; color: #fff; }
 
   .grid {
     list-style: none;
