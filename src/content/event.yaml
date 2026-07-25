@@ -15,6 +15,13 @@ india-2026:
   venue: BMS College of Engineering
   venueAddress: Bull Temple Rd, Basavanagudi, Bengaluru, Karnataka 560004
   mapEmbed: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.4720098421913!2d77.56422961107282!3d12.941620315481376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae158b11e34d2f%3A0x5f4adbdbab8bd80f!2sBMS%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1784802109426!5m2!1sen!2sin
+  gettingThere:
+    - title: By Metro
+      body: The nearest metro station is National College (Green Line), ~1.9 km away. A short auto ride or 15-minute walk will get you to campus.
+    - title: By Air
+      body: Kempegowda International Airport (BLR) is ~40 km away. You can take a Vayu Vajra airport bus or a taxi directly to the venue.
+    - title: By Train
+      body: KSR Bengaluru City Railway Station (Majestic) is ~5 km away. From there, you can switch to the Green Line metro or take a taxi.
 
 
 india-2025:
