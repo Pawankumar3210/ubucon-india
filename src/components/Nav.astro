@@ -24,6 +24,7 @@ const links = slug
 const isActive = (href: string) =>
   href !== "#" && (href.slice(base.length).replace(/\/$/, "") || "/") === here;
 ---
+
 <style>
   .p-navigation__toggle--open .p-icon--menu,
   .p-navigation__toggle--close .p-icon--close {
