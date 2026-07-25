@@ -41,13 +41,16 @@ const crumbs = [
       {
         announced ? (
           <>
-            <p class="body venue-lede">
+            <p class="body u-sv3">
               Join us in {e.city.replace(/,.*$/, "")} for two days of talks,
               workshops and community. Here's how to reach the venue.
             </p>
 
-            <div class="venue-grid">
-              <div class="venue-map">
+            <div class="row u-no-padding">
+              <div
+                class="col-7"
+                style="min-height: 360px; background: var(--u-placeholder); display: grid; place-items: center;"
+              >
                 {e.mapEmbed ? (
                   <iframe
                     src={e.mapEmbed}
@@ -55,29 +58,32 @@ const crumbs = [
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"
                     allowfullscreen
-                  ></iframe>
+                    style="width: 100%; height: 100%; min-height: 360px; border: 0;"
+                  />
                 ) : (
-                  <span class="venue-map__ph">Map</span>
+                  <span class="u-text--muted">Map</span>
                 )}
               </div>
 
-              {/* Venue card */}
-              <div class="p-card venue-card">
-                <p class="venue-card__name">
+              {/* Venue card; flex column so the CTA pins to the bottom. */}
+              <div
+                class="col-5 p-card"
+                style="display: flex; flex-direction: column;"
+              >
+                <h2 class="p-heading--4 has-icon u-aubergine">
                   <Icon name="geo-alt-fill" class="i-accent" size={26} />{" "}
                   {e.venue}
-                </p>
+                </h2>
                 {e.venueAddress && (
-                  <p class="venue-card__addr">{e.venueAddress}</p>
+                  <p class="u-text--muted">{e.venueAddress}</p>
                 )}
-                <p class="venue-card__dates">
-                  {dateRange(e.startDate, e.endDate)}
-                </p>
+                <p class="u-accent">{dateRange(e.startDate, e.endDate)}</p>
                 <a
-                  class="p-button--positive venue-card__cta"
+                  class="p-button--positive"
                   href={mapsUrl}
                   rel="noopener"
                   target="_blank"
+                  style="margin-top: auto; text-align: center;"
                 >
                   Get directions
                 </a>
@@ -85,30 +91,28 @@ const crumbs = [
             </div>
 
             {e.gettingThere.length > 0 && (
-              <div class="getting-there">
-                <h2 class="h-md getting-there__title">Getting there</h2>
-                <div class="c-accordion">
+              <>
+                <h2 class="h-md">Getting there</h2>
+                <aside class="p-accordion">
                   {e.gettingThere.map((g, i) => (
-                    <details class="c-accordion__item" open={i === 0}>
-                      <summary class="c-accordion__tab">
-                        <span>{g.title}</span>
-                        <Icon
-                          name="chevron-down"
-                          size={20}
-                          class="c-accordion__chev"
-                        />
+                    <details class="p-accordion__group" open={i === 0} style="margin-bottom: 0;">
+                      <summary
+                        class="p-accordion__tab"
+                        style="list-style: none; padding-left: 1rem;"
+                      >
+                        {g.title}
                       </summary>
-                      <div class="c-accordion__panel">
+                      <section class="p-accordion__panel u-no-margin--bottom">
                         <p>{g.body}</p>
-                      </div>
+                      </section>
                     </details>
                   ))}
-                </div>
-              </div>
+                </aside>
+              </>
             )}
           </>
         ) : (
-          <p class="body empty">
+          <p class="body">
             The venue for {e.name} in {e.city} is{" "}
             <strong>to be announced</strong>. Check back soon.
           </p>
@@ -119,125 +123,10 @@ const crumbs = [
 </Base>
 
 <style>
-  .venue-lede {
-    max-width: 42rem;
-    margin-bottom: 2rem;
-  }
-  .empty {
-    margin-top: 1.5rem;
-  }
-
-  .venue-grid {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    gap: 2rem;
-    align-items: stretch;
-  }
-
-  .venue-map {
-    min-height: 360px;
-    background: #dbe0de;
-    border: 1px solid var(--u-placeholder);
-    border-radius: 2px;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-  }
-  .venue-map iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    min-height: 360px;
-  }
-  .venue-map__ph {
-    color: #808080;
-    font-weight: 500;
-  }
-
-  .venue-card {
-    border-radius: 2px;
-    padding: 1.75rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  .venue-card__name {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1.375rem;
-    font-weight: 700;
-    color: var(--u-aubergine);
-    margin: 0;
-  }
-  .venue-card__addr {
-    color: #595959;
-    margin: 0;
-  }
-  .venue-card__dates {
-    color: var(--u-orange);
-    font-weight: 500;
-    margin: 0;
-  }
-  .venue-card__cta {
-    margin: auto 0 0;
-    text-align: center;
-  }
-
-  /* ── Getting-there accordion: native <details>, styled to match Vanilla ── */
-  .getting-there {
-    margin-top: 2.5rem;
-  }
-  .getting-there__title {
-    margin-top: 0;
-  }
-  .c-accordion {
-    border-top: 1px solid var(--u-placeholder);
-  }
-  .c-accordion__item {
-    border-bottom: 1px solid var(--u-placeholder);
-  }
-  .c-accordion__tab {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1.125rem 0;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1.125rem;
-    color: var(--u-aubergine);
-    list-style: none;
-  }
-  .c-accordion__tab::-webkit-details-marker {
-    display: none;
-  }
-  .c-accordion__chev {
-    transition: transform 0.15s ease;
-    color: var(--u-aubergine);
-  }
-  .c-accordion__item[open] .c-accordion__chev {
-    transform: rotate(180deg);
-  }
-  .c-accordion__panel {
-    padding: 0 0 1.25rem;
-  }
-  .c-accordion__panel p {
-    margin: 0;
-    color: #595959;
-    line-height: 1.55;
-    max-width: 60rem;
-  }
-
-  @media (max-width: 820px) {
-    .venue-grid {
-      grid-template-columns: 1fr;
-    }
-    .venue-map {
-      min-height: 260px;
-    }
-    .venue-map iframe {
-      min-height: 260px;
-    }
+  /* Vanilla styles .p-accordion__tab as a <button> with aria-expanded; on a
+     native <details> the chevron has to be flipped from the open state.
+     Pseudo-element, so this one can't be inline. */
+  details:not([open]) > .p-accordion__tab::before {
+    transform: rotate(-90deg);
   }
 </style>
