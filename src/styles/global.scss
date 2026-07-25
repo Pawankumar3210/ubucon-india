@@ -78,32 +78,6 @@
   gap: 0.5rem;
 }
 
-// Notifications - match the Figma 1:1: tinted fill per type + a 4px coloured
-// left bar, no status icon and no outer border. Stock Vanilla is white-bg with
-// a status glyph (tick / info / …) and a grey border; we drop both and tint.
-.p-notification,
-.p-notification--positive,
-.p-notification--information,
-.p-notification--caution,
-.p-notification--negative {
-  background-image: none; // remove the status tick/info glyph
-  border: none;           // drop the grey outer border (the ::before bar stays)
-  border-radius: 0;
-  padding-left: 1.25rem;  // reclaim the icon gutter
-}
-.p-notification::before,
-.p-notification--positive::before,
-.p-notification--information::before,
-.p-notification--caution::before,
-.p-notification--negative::before {
-  width: 4px;
-  left: 0;
-}
-.p-notification--positive { background-color: #f0f9f0; }
-.p-notification,
-.p-notification--information { background-color: #f0f6fc; }
-.p-notification--caution { background-color: #fff6ec; }
-.p-notification--negative { background-color: #fdeeed; }
 @media (max-width: 600px) {
   .u-container { padding-inline: 1rem; }
 }

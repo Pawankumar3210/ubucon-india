@@ -52,14 +52,16 @@ const crumbs = [
       <div class="u-sv3">
         {
           volunteers.length === 0 ? (
-            <p class="body">Volunteers for this edition are yet to be announced.</p>
+            <p class="body">
+              Volunteers for this edition are yet to be announced.
+            </p>
           ) : (
             <VolunteerGrid client:load volunteers={volunteers} />
           )
         }
       </div>
 
-      <div class="p-notification--positive">
+      <div class="p-notification--information">
         <div class="p-notification__content">
           <h3 class="p-notification__title">Want to help run {e.name}?</h3>
           <p class="p-notification__message">
@@ -92,7 +94,11 @@ const crumbs = [
                   type="button"
                   disabled
                   aria-disabled="true"
-                  title={closed ? "Applications have closed" : "Applications are not open yet"}
+                  title={
+                    closed
+                      ? "Applications have closed"
+                      : "Applications are not open yet"
+                  }
                 >
                   Apply to volunteer
                 </button>
