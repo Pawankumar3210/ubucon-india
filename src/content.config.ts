@@ -23,6 +23,8 @@ const event = defineCollection({
     prospectusUrl: z.url().optional(),
     cfpUrl: z.url().optional(),
     cfpDeadline: z.coerce.date().optional(),
+    volunteerUrl: z.url().optional(),
+    volunteerDeadline: z.coerce.date().optional(),
     highlightsUrl: z.url().optional(), // recap/album link
     stats: z.array(z.object({ n: z.string(), label: z.string() })).default([]),
     gallery: z.array(z.object({ src: image(), alt: z.string() })).default([]),
@@ -60,6 +62,16 @@ const lineup = defineCollection({
   }),
 });
 
+const volunteers = defineCollection({
+  loader: file('src/content/volunteers.yaml'),
+  schema: z.object({
+    edition: z.array(z.string()).nonempty(),
+    name: z.string(),
+    github: z.string(),
+    team: z.array(z.string()).nonempty(),
+  }),
+});
+
 const sponsors = defineCollection({
   loader: file('src/content/sponsors.yaml'),
   schema: ({ image }) => z.object({
@@ -82,4 +94,4 @@ const supporters = defineCollection({
   }),
 });
 
-export const collections = { event, lineup, sponsors, site, supporters };
+export const collections = { event, lineup, sponsors, site, supporters, volunteers };

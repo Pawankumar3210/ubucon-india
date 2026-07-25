@@ -1,0 +1,106 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../../layouts/Base.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import VolunteerGrid from "../../../components/VolunteerGrid.svelte";
+import { url } from "../../../lib/url";
+import { longDate } from "../../../lib/dates";
+
+export async function getStaticPaths() {
+  const editions = await getCollection("event");
+  return editions.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const e = entry.data;
+const slug = entry.id;
+
+const volunteers = (
+  await getCollection("volunteers", ({ data }) => data.edition.includes(slug))
+)
+  .map(({ data: v }) => v)
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+const now = new Date();
+const closed =
+  e.endDate < now || (e.volunteerDeadline ? e.volunteerDeadline < now : false);
+const canApply = !closed && !!e.volunteerUrl;
+
+const crumbs = [
+  { label: "Events", href: url("/events") },
+  { label: e.name, href: url(`/events/${slug}`) },
+  { label: "Volunteers" },
+];
+---
+
+<Base
+  title={`Volunteers · ${e.name}`}
+  description={`The crew running ${e.name}.`}
+>
+  <section class="p-strip">
+    <div class="u-container">
+      <Breadcrumbs items={crumbs} />
+      <h1 class="h-xl u-aubergine">Volunteers</h1>
+      <p class="body u-sv3">
+        The crew that runs {e.name} on the ground. From CFP review to the registration
+        desk.
+      </p>
+
+      <div class="u-sv3">
+        {
+          volunteers.length === 0 ? (
+            <p class="body">Volunteers for this edition are yet to be announced.</p>
+          ) : (
+            <VolunteerGrid client:load volunteers={volunteers} />
+          )
+        }
+      </div>
+
+      <div class="p-notification--positive">
+        <div class="p-notification__content">
+          <h3 class="p-notification__title">Want to help run {e.name}?</h3>
+          <p class="p-notification__message">
+            {
+              e.volunteerDeadline
+                ? closed
+                  ? `Volunteer applications closed on ${longDate(e.volunteerDeadline)}.`
+                  : `Volunteer applications are open until ${longDate(e.volunteerDeadline)}.`
+                : closed
+                  ? "Volunteer applications are closed."
+                  : "Volunteer applications are not open yet."
+            }
+          </p>
+        </div>
+        <div class="p-notification__meta">
+          <div class="p-notification__actions">
+            {
+              canApply ? (
+                <a
+                  class="p-button--positive u-no-margin--bottom"
+                  href={e.volunteerUrl}
+                  rel="noopener"
+                  target="_blank"
+                >
+                  Apply to volunteer
+                </a>
+              ) : (
+                <button
+                  class="p-button--positive u-no-margin--bottom"
+                  type="button"
+                  disabled
+                  aria-disabled="true"
+                  title={closed ? "Applications have closed" : "Applications are not open yet"}
+                >
+                  Apply to volunteer
+                </button>
+              )
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

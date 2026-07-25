@@ -1,0 +1,50 @@
+- id: "akshat-kumar-jha"
+  edition: ["india-2026"]
+  name: "Akshat Kumar Jha"
+  github: "jhaksh-24"
+  team: ["Web"]
+- id: "bhavanishankar-ravindra"
+  edition: ["india-2026"]
+  name: "Bhavanishankar Ravindra"
+  github: "bhavibond"
+  team: ["Core"]
+- id: "chintiw"
+  edition: ["india-2026"]
+  name: "Chintiw"
+  github: "Chintiw"
+  team: ["Core", "Design", "Media"]
+- id: "devyani-chavan"
+  edition: ["india-2026"]
+  name: "Devyani Chavan"
+  github: "devyanic11"
+  team: ["Design"]
+- id: "madhavan"
+  edition: ["india-2026"]
+  name: "Madhavan"
+  github: "ssmadhavan006"
+  team: ["Web"]
+- id: "megh-deb"
+  edition: ["india-2026"]
+  name: "Megh Deb"
+  github: "Megh2005"
+  team: ["Web"]
+- id: "nireekshaap07"
+  edition: ["india-2026"]
+  name: "NireekshaAP07"
+  github: "NireekshaAP07"
+  team: ["Design"]
+- id: "soumyadeep-ghosh"
+  edition: ["india-2026"]
+  name: "Soumyadeep Ghosh"
+  github: "soumyaDghosh"
+  team: ["Core", "Media", "Web"]
+- id: "vidya-bavisakar"
+  edition: ["india-2026"]
+  name: "Vidya Bavisakar"
+  github: "vidyabaviskar"
+  team: ["Media"]
+- id: "vutukuri-srinivas"
+  edition: ["india-2026"]
+  name: Vutukuri Sreenivasan
+  github: "cnu1812"
+  team: ["Core"]
