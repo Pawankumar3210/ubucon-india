@@ -49,7 +49,7 @@
             <span class="p-chip__value">{team}</span>
           </span>
         {/each}
-        <a class="p-button--link is-small" href="https://github.com/{v.github}" rel="noopener">
+        <a class="p-button--link is-small" href="https://github.com/{v.github}" target="_blank" rel="noopener noreferrer">
           @{v.github}
         </a>
       </div>
