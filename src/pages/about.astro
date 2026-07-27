@@ -160,16 +160,18 @@ const mission = [
     gap: 1rem;
     margin-top: 1.75rem;
   }
+  /* TODO: Refactor this media collage to use native Vanilla Framework CSS utilities/components when possible to remove this custom CSS. */
   .about__media {
     position: relative;
-    min-height: 420px;
+    width: 100%;
+    aspect-ratio: 1.35;
   }
   .about__sun {
     position: absolute;
     top: 0;
     left: 40%;
-    width: 190px;
-    height: 190px;
+    width: 38%;
+    aspect-ratio: 1;
     border-radius: 50%;
     background: var(--u-orange);
   }
@@ -185,12 +187,12 @@ const mission = [
   .about__speakers {
     position: absolute;
     right: 0;
-    top: 20px;
+    top: 4%;
     width: 42%;
     aspect-ratio: 1;
     border-radius: 50%;
     object-fit: cover;
-    border: 6px solid #fff;
+    border: clamp(3px, 1.5vw, 6px) solid #fff;
   }
 
   @media (max-width: 900px) {
@@ -212,9 +214,6 @@ const mission = [
     .about__cta .p-button,
     .about__cta .p-button--positive {
       justify-content: center;
-    }
-    .about__media {
-      min-height: 340px;
     }
   }
 </style>
