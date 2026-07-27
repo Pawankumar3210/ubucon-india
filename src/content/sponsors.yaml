@@ -13,7 +13,7 @@
   url: https://cdac.in
 
 - id: qualcomm
-  editions: [india-2025]
+  editions: [india-2025, india-2026]
   name: Qualcomm
   tier: gold
   logo: ../assets/sponsors/qualcomm.svg
