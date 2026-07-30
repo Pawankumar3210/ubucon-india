@@ -7,15 +7,26 @@ import { url } from "../lib/url";
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
 }
 
-const siteName = "UbuCon India 2026";
+const siteName = "UbuCon India";
 const {
   title,
   description = "The Indian community conference for Ubuntu and open source.",
+  ogImage,
 } = Astro.props;
-const fullTitle = title ? `${title} · ${siteName}` : siteName;
+
+const fullTitle = !title
+  ? `${siteName} | Community Conference by Ubuntu India`
+  : title.includes(siteName)
+    ? title
+    : `${title} · ${siteName}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+
+// Edition pages get their dated share card, everything else the evergreen one.
+const edition = Astro.url.pathname.match(/^\/events\/india-(\d{4})\//)?.[1];
+const socialCard = ogImage ?? (edition ? `/og-${edition}.png` : "/og-evergreen.png");
 ---
 
 <!doctype html>
@@ -30,6 +41,15 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <link rel="canonical" href={canonical} />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(socialCard, Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
     <title>{fullTitle}</title>
   </head>
   <body>
