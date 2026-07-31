@@ -25,3 +25,9 @@ pnpm-debug.log*
 
 # package manager locks
 *.lock
+
+# agentic IDEs
+.commandcode
+
+# misc
+scripts
