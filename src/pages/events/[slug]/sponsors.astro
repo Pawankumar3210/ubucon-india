@@ -90,36 +90,78 @@ const crumbs = [
                   <h2 class="tier__name">{TIER_META[g.tier].label}</h2>
                   <span class="tier__sub">{TIER_META[g.tier].sub}</span>
                 </div>
-                <div
-                  class:list={[
-                    "p-logo-section",
-                    "tier__logos",
-                    `logos--${TIER_META[g.tier].size}`,
-                  ]}
-                >
-                  <div class="p-logo-section__items">
-                    {g.items.map(({ data: s }) => (
-                      <div class="p-logo-section__item">
-                        <a
-                          href={s.url}
-                          rel="noopener"
-                          target="_blank"
-                          aria-label={s.name}
-                        >
-                          {s.logo ? (
-                            <Image
-                              class="p-logo-section__logo"
-                              src={s.logo}
-                              alt={s.name}
-                              loading="lazy"
-                            />
-                          ) : (
-                            <span class="logo__name">{s.name}</span>
+                
+                <div class="row sponsor-cards-grid">
+                  {g.items.map(({ data: s }) => (
+                    <div class="col-6 col-medium-3 u-sv1">
+                      <div class={g.tier === 'diamond' || g.tier === 'platinum' ? 'p-card--highlighted' : 'p-card'}>
+                        <div class="p-card__header">
+                          <a
+                            href={s.url}
+                            rel="noopener"
+                            target="_blank"
+                            aria-label={s.name}
+                          >
+                            {s.logo ? (
+                              <Image
+                                class="sponsor-logo"
+                                src={s.logo}
+                                alt={s.name}
+                                loading="lazy"
+                              />
+                            ) : (
+                              <span class="logo__name">{s.name}</span>
+                            )}
+                          </a>
+                        </div>
+
+                        <div class="p-card__content">
+                          <h3 class="p-heading--4 u-no-margin--bottom">
+                            <a href={s.url} target="_blank" rel="noopener">{s.name}</a>
+                          </h3>
+
+                          {s.tagline && (
+                            <p class="p-text--small-caps tagline">
+                              <strong>{s.tagline}</strong>
+                            </p>
                           )}
-                        </a>
+
+                          {s.description && (
+                            <p class="p-card__text">
+                              {s.description}
+                            </p>
+                          )}
+                        </div>
+
+                        {s.socials && (
+                          <div class="p-card__footer">
+                            <ul class="p-inline-list u-no-margin--bottom">
+                              {s.socials.site && (
+                                <li class="p-inline-list__item">
+                                  <a href={s.socials.site} class="p-link--external" target="_blank" rel="noopener">Website</a>
+                                </li>
+                              )}
+                              {s.socials.github && (
+                                <li class="p-inline-list__item">
+                                  <a href={s.socials.github} class="p-link--external" target="_blank" rel="noopener">GitHub</a>
+                                </li>
+                              )}
+                              {s.socials.linkedin && (
+                                <li class="p-inline-list__item">
+                                  <a href={s.socials.linkedin} class="p-link--external" target="_blank" rel="noopener">LinkedIn</a>
+                                </li>
+                              )}
+                              {s.socials.x && (
+                                <li class="p-inline-list__item">
+                                  <a href={s.socials.x} class="p-link--external" target="_blank" rel="noopener">X</a>
+                                </li>
+                              )}
+                            </ul>
+                          </div>
+                        )}
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
@@ -129,7 +171,6 @@ const crumbs = [
 
       {
         upcoming ? (
-          /* Become a sponsor CTA - always sells the latest (upcoming) event. */
           <div class="sponsor-cta">
             <div class="sponsor-cta__text">
               <h2 class="sponsor-cta__title">
@@ -157,7 +198,6 @@ const crumbs = [
             </div>
           </div>
         ) : (
-          /* No upcoming edition to sponsor - invite a community donation instead. */
           <div class="sponsor-cta">
             <div class="sponsor-cta__text">
               <h2 class="sponsor-cta__title">Support the community</h2>
@@ -203,7 +243,7 @@ const crumbs = [
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
   .tier__bar {
     width: 6px;
@@ -225,46 +265,22 @@ const crumbs = [
     color: #666;
   }
 
-  /* Logos have wildly different aspect ratios (Qualcomm ~5:1 vs CDAC ~1.4:1),
-     so height-only normalising blows the wide ones up. Instead give every logo
-     an equal bounding BOX per tier and contain-fit inside it - equal visual
-     footprint, aspect preserved. No card background (strict vanilla). */
-  .tier__logos {
-    --box-w: 200px;
-    --box-h: 76px;
+  .sponsor-cards-grid {
+    margin-bottom: 1rem;
   }
-  .logos--md {
-    --box-w: 170px;
-    --box-h: 64px;
-  }
-  .logos--sm {
-    --box-w: 150px;
-    --box-h: 54px;
-  }
-  .logos--xs {
-    --box-w: 120px;
-    --box-h: 44px;
-  }
-  .tier__logos :global(.p-logo-section__items) {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem 2.5rem;
-  }
-  .tier__logos :global(.p-logo-section__item) {
-    margin: 0;
-  }
-  .tier__logos a {
-    display: block;
-    text-decoration: none;
-  }
-  .tier__logos :global(.p-logo-section__logo) {
-    width: var(--box-w);
-    height: var(--box-h);
-    max-width: 100%;
+
+  .sponsor-logo {
+    max-height: 50px;
+    width: auto;
     object-fit: contain;
-    object-position: left center;
+    margin-bottom: 0.5rem;
   }
+
+  .tagline {
+    margin: 0.25rem 0 0.5rem 0;
+    color: #555;
+  }
+
   .logo__name {
     font-weight: 500;
     color: #555;
