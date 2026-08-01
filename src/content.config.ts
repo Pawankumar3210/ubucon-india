@@ -1,6 +1,6 @@
 import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
-import { file, glob } from 'astro/loaders';
+import { file } from 'astro/loaders';
 
 const event = defineCollection({
   loader: file('src/content/event.yaml'),
@@ -17,19 +17,19 @@ const event = defineCollection({
     cover: image().optional(),
     indicoId: z.number().int().positive().optional(),
     highlights: z
-      .array(z.object({ label: z.string(), image: image().optional(), url: z.string().url().optional() }))
+      .array(z.object({ label: z.string(), image: image().optional(), url: z.url().optional() }))
       .default([]),
-    ticketUrl: z.string().url().optional(),
-    prospectusUrl: z.string().url().optional(),
-    cfpUrl: z.string().url().optional(),
+    ticketUrl: z.url().optional(),
+    prospectusUrl: z.url().optional(),
+    cfpUrl: z.url().optional(),
     cfpDeadline: z.coerce.date().optional(),
-    volunteerUrl: z.string().url().optional(),
+    volunteerUrl: z.url().optional(),
     volunteerDeadline: z.coerce.date().optional(),
-    highlightsUrl: z.string().url().optional(), // recap/album link
+    highlightsUrl: z.url().optional(),
     stats: z.array(z.object({ n: z.string(), label: z.string() })).default([]),
     gallery: z.array(z.object({ src: image(), alt: z.string() })).default([]),
     venueAddress: z.string().optional(),
-    mapEmbed: z.string().url().optional(),
+    mapEmbed: z.url().optional(),
     gettingThere: z
       .array(z.object({ title: z.string(), body: z.string() }))
       .default([]),
@@ -44,7 +44,7 @@ const site = defineCollection({
       .array(z.object({ label: z.string(), email: z.string().email() }))
       .default([]),
     socials: z
-      .object({ x: z.string().url(), mastodon: z.string().url(), linkedin: z.string().url(), github: z.string().url() })
+      .object({ x: z.url(), mastodon: z.url(), linkedin: z.url(), github: z.url() })
       .partial()
       .optional(),
   }),
@@ -80,15 +80,14 @@ const sponsors = defineCollection({
     name: z.string(),
     tier: z.enum(['diamond', 'platinum', 'gold', 'silver', 'bronze', 'supporter', 'community']),
     logo: image().optional(),
-    url: z.string().url(),
-    // --- NEW EXTRA FIELDS ---
+    url: z.url(),
     tagline: z.string().optional(),
     description: z.string().optional(),
     socials: z.object({
-      x: z.string().url().optional(),
-      linkedin: z.string().url().optional(),
-      github: z.string().url().optional(),
-      site: z.string().url().optional(),
+      x: z.url().optional(),
+      linkedin: z.url().optional(),
+      github: z.url().optional(),
+      site: z.url().optional(),
     }).optional(),
   }),
 });
