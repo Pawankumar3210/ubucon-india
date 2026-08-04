@@ -32,6 +32,13 @@
     x: https://x.com/qualcomm
     linkedin: https://www.linkedin.com/company/qualcomm
 
+- id: bmsce
+  editions: [india-2026]
+  name: BMS College of Engineering
+  tier: venue
+  logo: ../assets/sponsors/bmsce.png
+  url: https://bmsce.ac.in
+
 - id: onlyoffice
   editions: [asia-2024]
   name: ONLYOFFICE

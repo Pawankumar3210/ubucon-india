@@ -78,7 +78,7 @@ const sponsors = defineCollection({
     id: z.string(),
     editions: z.array(z.string()),
     name: z.string(),
-    tier: z.enum(['diamond', 'platinum', 'gold', 'silver', 'bronze', 'supporter', 'community']),
+    tier: z.enum(['diamond', 'platinum', 'gold', 'silver', 'bronze', 'venue', 'supporter', 'community']),
     logo: image().optional(),
     url: z.url(),
     tagline: z.string().optional(),
